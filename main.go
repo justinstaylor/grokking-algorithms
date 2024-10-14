@@ -10,6 +10,7 @@ func main() {
 	binarySearch()
 	selectionSort()
 	quickSort()
+	breadthFirstSearch()
 }
 
 func binarySearch() {
@@ -29,4 +30,22 @@ func quickSort() {
 	arr := []int{5, 7, 2, 4, 1, 3, 6, 9, 8, 10}
 	result := sort.QuickSort(arr)
 	fmt.Println("Sorted array: ", result)
+}
+
+func breadthFirstSearch() {
+	graph := map[string][]string{
+		"you":    {"alice", "bob", "claire"},
+		"bob":    {"anuj", "peggy"},
+		"alice":  {"peggy"},
+		"claire": {"thom", "jonny"},
+		"anuj":   {},
+		"peggy":  {},
+		"thom":   {},
+		"jonny":  {},
+	}
+	start := "you"
+	target := "thom"
+
+	result := search.BreadthFirstSearch(graph, start, target)
+	fmt.Printf("Found %s: %t\n", target, result)
 }
