@@ -11,6 +11,7 @@ func main() {
 	selectionSort()
 	quickSort()
 	breadthFirstSearch()
+	depthFirstSearch()
 }
 
 func binarySearch() {
@@ -47,5 +48,18 @@ func breadthFirstSearch() {
 	target := "thom"
 
 	result := search.BreadthFirstSearch(graph, start, target)
+	fmt.Printf("Found %s: %t\n", target, result)
+}
+
+func depthFirstSearch() {
+	graph := map[string][]string{
+		"pics": {"2001", "odyssey.png"},
+		"2001": {"a.png", "space.png"},
+	}
+
+	start := "pics"
+	target := "space.png"
+
+	result := search.DepthFirstSearch(graph, start, target)
 	fmt.Printf("Found %s: %t\n", target, result)
 }
