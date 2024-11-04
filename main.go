@@ -12,6 +12,7 @@ func main() {
 	quickSort()
 	breadthFirstSearch()
 	depthFirstSearch()
+	dijkstra()
 }
 
 func binarySearch() {
@@ -62,4 +63,27 @@ func depthFirstSearch() {
 
 	result := search.DepthFirstSearch(graph, start, target)
 	fmt.Printf("Found %s: %t\n", target, result)
+}
+
+func dijkstra() {
+	graph := map[string]map[string]int{
+		"A": {"B": 1, "C": 4},
+		"B": {"C": 2, "D": 5},
+		"C": {"D": 1},
+		"D": {},
+	}
+
+	start := "A"
+
+	costs, parents := search.Dijkstra(graph, start)
+
+	fmt.Println("Shortest path costs from start node:", start)
+	for node, cost := range costs {
+		fmt.Printf("Node %s: %d\n", node, cost)
+	}
+
+	fmt.Println("Parents of each node:")
+	for node, parent := range parents {
+		fmt.Printf("Node %s: Parent %s\n", node, parent)
+	}
 }
